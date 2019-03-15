@@ -1,6 +1,6 @@
 language: r
 sudo: false
-dist: xenial
+#dist: xenial
 cache: packages
 warnings_are_errors: true
 
@@ -11,7 +11,6 @@ addons:
   apt:
     packages:
       - libcurl4-gnutls-dev
-#      - libcurl4-openssl-dev
       - libgit2-dev         
       - libssl-dev          
       - libudunits2-dev     
