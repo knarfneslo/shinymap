@@ -11,7 +11,7 @@ addons:
   apt:
     packages:
       - libcurl4-gnutls-dev
-      - libcurl4-openssl-dev
+#      - libcurl4-openssl-dev
       - libgit2-dev         
       - libssl-dev          
       - libudunits2-dev     
