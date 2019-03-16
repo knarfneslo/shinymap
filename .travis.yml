@@ -7,6 +7,10 @@ dist: xenial
 r:
   - release
 
+env:
+  global:
+    - _R_CHECK_TESTS_NLINES_=0
+
 addons:
   apt:
     packages:
@@ -24,7 +28,6 @@ addons:
 #  - Rscript -e "install.packages(c('roxygen2', 'devtools', 'pkgdown', 'shinytest'))"
 
 script:
-  - _R_CHECK_TESTS_NLINES_=0
   - R CMD build .
   - R CMD check *tar.gz
 
