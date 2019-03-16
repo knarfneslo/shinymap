@@ -24,6 +24,7 @@ before_install:
   - Rscript -e "install.packages(c('covr', 'roxygen2', 'devtools', 'pkgdown', 'shinytest'))"
 
 script:
+  - _R_CHECK_TESTS_NLINES_=0
   - R CMD build .
   - R CMD check *tar.gz
 
