@@ -24,7 +24,8 @@ addons:
       - protobuf-compiler
       - libgdal-dev
 
-#before_install:
+before_install:
+  - "phantomjs --version"
 #  - Rscript -e "install.packages(c('roxygen2', 'devtools', 'pkgdown', 'shinytest'))"
 
 script:
