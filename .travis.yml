@@ -27,16 +27,21 @@ addons:
 before_install:
   - "phantomjs --version"
 #  - Rscript -e "install.packages(c('roxygen2', 'devtools', 'pkgdown', 'shinytest'))"
+  - Rscript -e "if (!require('covr')) install.packages('covr')"
+  - Rscript -e "if (!require('roxygen2')) install.packages('roxygen2')"
+  - Rscript -e "if (!require('devtools')) install.packages('devtools')"
+  - Rscript -e "if (!require('pkgdown')) devtools::install_github('r-lib/pkgdown')"
+  - Rscript -e "if (!require('shinytest')) install.packages('shinytest')"
 
 script:
   - R CMD build .
   - R CMD check *tar.gz
 
 after_success:
-  - Rscript -e 'if (!require("covr")) install.packages("covr"); covr::codecov()'
-  - Rscript -e 'if (!require("devtools")) install.packages("devtools"); devtools::document()'
-  - Rscript -e 'if (!require("roxygen2")) install.packages("roxygen2"); roxygen2::roxygenise()'
-  - Rscript -e 'if (!require("pkgdown")) install.packages("pkgdown"); pkgdown::build_site()'
+  - Rscript -e 'covr::codecov()'
+  - Rscript -e 'devtools::document()'
+  - Rscript -e 'roxygen2::roxygenise()'
+  - Rscript -e 'pkgdown::build_site()'
 
 deploy:
   provider: pages                         # Specify the gh-pages deployment method
